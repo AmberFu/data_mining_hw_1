@@ -5,6 +5,7 @@ import plotly.graph_objs as go
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
+
 def get_tokens_and_frequency(token_list):
     """obtain word frequecy from pandas dataframe column of lists"""
     counter = Counter(token_list)
@@ -23,6 +24,21 @@ def compute_frequencies(train_data, emotion, feature, frequency=True):
     else:
         return tokens
 
+    
+################################
+""" modify function """
+################################
+
+def get_type_and_frequency(token_list):
+    """obtain type frequecy from pandas dataframe column of lists"""
+    counter = Counter(token_list)
+    counter = OrderedDict(counter.most_common()) # sort by value
+
+    return counter
+    
+    
+    
+    
 ###################################
 """ Visualizing Functions """
 ###################################
@@ -42,6 +58,8 @@ def plot_word_frequency(word_list, plot_title):
 
     fig = go.Figure(data = data, layout=layout)
     return fig
+
+
 
 def plot_heat_map(plot_x, plot_y, plot_z):
     """ Helper to plot heat map """
